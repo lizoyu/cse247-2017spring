@@ -1,0 +1,5 @@
+- `dh`: Diffie–Hellman algorithm
+- `heaps`: Binary heap
+- `kwaymergesort`: Merge sort
+- `rabinkarp`: Rabin–Karp algorithm
+- `spath`: Dijkstra's shortest path
