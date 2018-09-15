@@ -1,0 +1,137 @@
+-------------------
+CSE247 Robot tester starts testing spath on 2017-04-07 15:25:30 -0500
+
+========
+Testing in GradingRepos/repos/cse247-s17-students-shuyu: spath as of 2017-03-24 09:00
+========
+Now in: /Users/tdelanuez/cse247-support/GradingRepos/repos/cse247-s17-students-shuyu
+Your branch is up-to-date with 'origin/master'.
+HEAD is now at 204e783 shuyuxu 450633
+No local changes to save
+
+Already up-to-date.
+Going back in time to: 2017-03-24 09:00
+At hash e644d3cd5606076e5919a5d6a5b55eac7de3ade9
+
+Buildfile: /Users/tdelanuez/cse247-support/build.xml
+
+copytest:
+     [echo] would copy from /Users/tdelanuez/git/cse247-s17-students-adelanuez key shuyu testfilesource testing/TestShortestPathSilent package spath repo GradingRepos/repos/cse247-s17-students-shuyu
+     [copy] Copying 1 file to /Users/tdelanuez/cse247-support/GradingRepos/repos/cse247-s17-students-shuyu/labs/spath/testing
+
+BUILD SUCCESSFUL
+Total time: 0 seconds
+Compiling the code
+Buildfile: /Users/tdelanuez/cse247-support/build.xml
+
+compile:
+     [echo] Compiling spath/ShortestPaths
+    [mkdir] Created dir: /Users/tdelanuez/cse247-support/GradingRepos/repos/cse247-s17-students-shuyu/bin
+
+BUILD SUCCESSFUL
+Total time: 0 seconds
+Buildfile: /Users/tdelanuez/cse247-support/build.xml
+
+compile:
+     [echo] Compiling spath/testing/TestShortestPathSilent
+    [javac] Compiling 1 source file to /Users/tdelanuez/cse247-support/GradingRepos/repos/cse247-s17-students-shuyu/bin
+    [javac] /Users/tdelanuez/cse247-support/GradingRepos/repos/cse247-s17-students-shuyu/labs/spath/testing/TestShortestPathSilent.java:9: error: cannot find symbol
+    [javac] import spath.ShortestPaths;
+    [javac]             ^
+    [javac]   symbol:   class ShortestPaths
+    [javac]   location: package spath
+    [javac] /Users/tdelanuez/cse247-support/GradingRepos/repos/cse247-s17-students-shuyu/labs/spath/testing/TestShortestPathSilent.java:44: error: cannot find symbol
+    [javac] 		ShortestPaths sp = new ShortestPaths(g, gg.start(), gg.weights());
+    [javac] 		^
+    [javac]   symbol:   class ShortestPaths
+    [javac]   location: class TestShortestPathSilent
+    [javac] /Users/tdelanuez/cse247-support/GradingRepos/repos/cse247-s17-students-shuyu/labs/spath/testing/TestShortestPathSilent.java:44: error: cannot find symbol
+    [javac] 		ShortestPaths sp = new ShortestPaths(g, gg.start(), gg.weights());
+    [javac] 		                       ^
+    [javac]   symbol:   class ShortestPaths
+    [javac]   location: class TestShortestPathSilent
+    [javac] 3 errors
+
+BUILD SUCCESSFUL
+Total time: 0 seconds
+Running test testing.TestShortestPathSilent
+Buildfile: /Users/tdelanuez/cse247-support/build.xml
+
+test:
+    [junit] Running spath.testing.TestShortestPathSilent
+    [junit] Testsuite: spath.testing.TestShortestPathSilent
+    [junit] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 sec
+    [junit] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 sec
+    [junit] 
+    [junit] 	Caused an ERROR
+    [junit] spath.testing.TestShortestPathSilent
+    [junit] java.lang.ClassNotFoundException: spath.testing.TestShortestPathSilent
+    [junit] 	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+    [junit] 	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+    [junit] 	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331)
+    [junit] 	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+    [junit] 	at java.lang.Class.forName0(Native Method)
+    [junit] 	at java.lang.Class.forName(Class.java:264)
+    [junit] 
+
+BUILD FAILED
+/Users/tdelanuez/cse247-support/build.xml:34: Test spath.testing.TestShortestPathSilent failed
+
+Total time: 0 seconds
+========
+Testing in GradingRepos/repos/cse247-s17-students-shuyu: spath as of 2017-03-31 09:00
+========
+Now in: /Users/tdelanuez/cse247-support/GradingRepos/repos/cse247-s17-students-shuyu
+Your branch is up-to-date with 'origin/master'.
+HEAD is now at 204e783 shuyuxu 450633
+No local changes to save
+
+Already up-to-date.
+Going back in time to: 2017-03-31 09:00
+At hash 204e783c4e6b4c4a50ec86c3a9a6f366950962de
+
+Buildfile: /Users/tdelanuez/cse247-support/build.xml
+
+copytest:
+     [echo] would copy from /Users/tdelanuez/git/cse247-s17-students-adelanuez key shuyu testfilesource testing/TestShortestPathSilent package spath repo GradingRepos/repos/cse247-s17-students-shuyu
+     [copy] Copying 1 file to /Users/tdelanuez/cse247-support/GradingRepos/repos/cse247-s17-students-shuyu/labs/spath/testing
+
+BUILD SUCCESSFUL
+Total time: 0 seconds
+Compiling the code
+Buildfile: /Users/tdelanuez/cse247-support/build.xml
+
+compile:
+     [echo] Compiling spath/ShortestPaths
+    [mkdir] Created dir: /Users/tdelanuez/cse247-support/GradingRepos/repos/cse247-s17-students-shuyu/bin
+    [javac] Compiling 1 source file to /Users/tdelanuez/cse247-support/GradingRepos/repos/cse247-s17-students-shuyu/bin
+
+BUILD SUCCESSFUL
+Total time: 1 second
+Buildfile: /Users/tdelanuez/cse247-support/build.xml
+
+compile:
+     [echo] Compiling spath/testing/TestShortestPathSilent
+    [javac] Compiling 1 source file to /Users/tdelanuez/cse247-support/GradingRepos/repos/cse247-s17-students-shuyu/bin
+
+BUILD SUCCESSFUL
+Total time: 0 seconds
+Running test testing.TestShortestPathSilent
+Buildfile: /Users/tdelanuez/cse247-support/build.xml
+
+test:
+    [junit] Running spath.testing.TestShortestPathSilent
+    [junit] Testsuite: spath.testing.TestShortestPathSilent
+    [junit] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.48 sec
+    [junit] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.48 sec
+    [junit] 
+    [junit] Testcase: test took 4.466 sec
+
+BUILD SUCCESSFUL
+Total time: 5 seconds
+================
+Lab is counted as working
+================
+
+CSE247 Robot tester ends testing spath on 2017-04-07 15:25:45 -0500
+-------------------
