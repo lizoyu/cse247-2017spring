@@ -80,40 +80,29 @@ public class ShortestPaths {
 		//
 		startVertDist.decrease(startVertDist.getValue().sameVertexNewDistance(0));
 
-
-		//
-		// OK you take it from here
-		// Extract nodes from the pq heap
-		//   and act upon them as instructed in class and the text.
-		//
-		// FIXME
-		
-		// keep iterating until the MinHeap is empty
-		while( !pq.isEmpty() ){
-			
+		// keep iterating until the MinHeap is empty (all vertice are updated)
+		while(!pq.isEmpty()){
 			// extract the vertex with the minimal distance
 			VertexAndDist minVertDist = pq.extractMin();
 			int minDist = minVertDist.getDistance();
 			Vertex minVertex = minVertDist.getVertex();
 			
-			// relax its neighbors(successors)
-			for( Edge e : minVertex.edgesFrom() ){
-				
+			// relax its neighbors (successors)
+			for(Edge e : minVertex.edgesFrom()){
 				// look up the decreaser of each neighbor
-				Decreaser<VertexAndDist> toVertDist = map.get( e.to );
+				Decreaser<VertexAndDist> toVertDist = map.get(e.to);
 				
 				// if vertex.distance + weight(edge) < successor.distance,
 				// the neighbor is decreased to a smaller distance, and update toEdge to this edge
-				if( minDist + weights.get(e) < toVertDist.getValue().getDistance() ){
-					toVertDist.decrease( toVertDist.getValue().
-							sameVertexNewDistance( minDist + weights.get(e) ) );
-					toEdge.put( e.to, e );
+				if(minDist + weights.get(e) < toVertDist.getValue().getDistance()){
+					toVertDist.decrease(toVertDist.getValue().sameVertexNewDistance( minDist + weights.get(e) ));
+					toEdge.put(e.to, e);
 				}
 			}
 		}
 	}
 
-	
+
 	/**
 	 * Return a List of Edges forming a shortest path from the
 	 *    startVertex to the specified endVertex.  Do this by tracing
@@ -125,20 +114,16 @@ public class ShortestPaths {
 	 * @return
 	 */
 	public LinkedList<Edge> returnPath(Vertex endVertex) {
-		LinkedList<Edge> path = new LinkedList<Edge>();
-
-		//
-		// FIXME
-		//
-		
 		// initialize
+		LinkedList<Edge> path = new LinkedList<Edge>();
 		Vertex toVertex = endVertex;
 		
-		// tracing back to the startVertex (with a null toEdge)
-		while( toEdge.get( toVertex ) != null ){
-			path.addFirst( toEdge.get( toVertex ) );
-			toVertex = toEdge.get( toVertex ).from;
+		// trace back to the startVertex (with a null toEdge)
+		while(toEdge.get(toVertex) != null){
+			path.addFirst(toEdge.get(toVertex));
+			toVertex = toEdge.get(toVertex).from;
 		}
+
 		return path;
 	}
 	
