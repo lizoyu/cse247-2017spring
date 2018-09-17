@@ -24,9 +24,9 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	public MinHeap(int maxSize, Ticker ticker) {
-		this.array = new Decreaser[maxSize+1];
-		this.size = 0;
-		this.ticker = ticker;
+		this.array = new Decreaser[maxSize+1];	// heap as a decreaser
+		this.size = 0;							// records the heap size
+		this.ticker = ticker;					// time counter
 	}
 
 	//
@@ -46,9 +46,10 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 	 *   decrease(int loc) when necessary.
 	 */
 	public Decreaser<T> insert(T thing) {
+		// create a new node as decreaser, update heap size
 		Decreaser<T> ans = new Decreaser<T>(thing, this, ++size);
-		array[size] = ans;
-		decrease( array[size].loc );
+		array[size] = ans;				// insert it into the end of heap
+		decrease(array[size].loc);	// maintain the heap property
 
 		return ans;
 	}
@@ -80,16 +81,22 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 	 *     decreased in value
 	 */
 	void decrease(int loc) {
+		// initialize pointers as the node's and its parent's current location
 		int loc_child = loc, loc_p = loc_child / 2;
 		
 		// keep exchanging up the tree until root or child larger than parent
-		while( loc_child > 1 && array[loc_child].getValue().compareTo( array[loc_p].getValue() ) < 0 ){
+		while(loc_child > 1 && array[loc_child].getValue().compareTo(array[loc_p].getValue()) < 0){
+			// exchange parent with child
 			Decreaser<T> temp = array[loc_p];
-			array[loc_p] = array[loc_child];	// exchange parent with child
+			array[loc_p] = array[loc_child];	
 			array[loc_child] = temp;
-			array[loc_p].loc = loc_p;			// sync the loc with current location
+
+			// update their locations
+			array[loc_p].loc = loc_p;			
 			array[loc_child].loc = loc_child;
-			loc_child = loc_p;					// update location of parent and child
+
+			// update pointers (going up)
+			loc_child = loc_p;					
 			loc_p = loc_child / 2;
 		}
 	}
@@ -104,11 +111,12 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 	public T extractMin() {
 		T ans = array[1].getValue();
 
-		// move the last node to the root, then eliminate it from the heap (store the 'null')
+		// move the last node to the root, then set it 'null'
 		array[1] = array[size];
 		array[1].loc = 1;
 		array[size] = null;
 		size--;
+
 		// start to heapify
 		heapify(1);
 		
@@ -123,42 +131,61 @@ public class MinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
 	 * @param where the index into the array where the parent lives
 	 */
 	private void heapify(int where) {
-		// only one/no element (root) or reach the leaf
-		if( size <= 1 || where * 2 > size )
+		// if there's one/no node (root) or reach the leaf
+		if(size <= 1 || where * 2 > size)
 			return;
+		// initialize pointers as self, left child and right child's current location
 		int loc_p = where, loc_lchild = loc_p * 2, loc_rchild = loc_lchild + 1;
 		
-		// parent has only left child
-		if( loc_lchild == size ){
-			if( array[loc_lchild].getValue().compareTo( array[loc_p].getValue() ) < 0 ){
+		// if parent has only left child
+		if(loc_lchild == size){
+			// if left child < parent, violate heap property, exchange
+			if(array[loc_lchild].getValue().compareTo(array[loc_p].getValue()) < 0){
+				// exchange parent with left child
 				Decreaser<T> temp = array[loc_lchild];
-				array[loc_lchild] = array[loc_p];		// exchange parent with left child
+				array[loc_lchild] = array[loc_p];		
 				array[loc_p] = temp;
-				array[loc_lchild].loc = loc_lchild;		// sync the loc with current location
+
+				// update their locations
+				array[loc_lchild].loc = loc_lchild;		
 				array[loc_p].loc = loc_p;
 			}
 			return;
 		}
 		
-		// exchange parent with child and heapify current children
-		if( array[loc_lchild].getValue().compareTo( array[loc_rchild].getValue() ) < 0 ){
-			if( array[loc_lchild].getValue().compareTo( array[loc_p].getValue() ) < 0 ){
+		// then parent has both children
+		// if right child > left child, then right child wouldn't violate heap property anyway
+		if(array[loc_lchild].getValue().compareTo(array[loc_rchild].getValue()) < 0){
+			// exchange if left child < parent
+			if(array[loc_lchild].getValue().compareTo(array[loc_p].getValue()) < 0){
+				// exchange parent with left child
 				Decreaser<T> temp = array[loc_lchild];
-				array[loc_lchild] = array[loc_p];		// exchange parent with left child
+				array[loc_lchild] = array[loc_p];		
 				array[loc_p] = temp;
-				array[loc_lchild].loc = loc_lchild;		// sync the loc with current location
+
+				// update their locations
+				array[loc_lchild].loc = loc_lchild;		
 				array[loc_p].loc = loc_p;
-				heapify( loc_lchild );					// heapify left child
+
+				// heapify left child
+				heapify(loc_lchild);					
 			}
 		}
+		// else left child >= right child, then left child wouldn't violate heap property anyway
 		else{
-			if( array[loc_rchild].getValue().compareTo( array[loc_p].getValue() ) < 0 ){
+			// exchange if right child < parent
+			if(array[loc_rchild].getValue().compareTo(array[loc_p].getValue()) < 0){
+				// exchange parent with right child
 				Decreaser<T> temp = array[loc_rchild];
-				array[loc_rchild] = array[loc_p];		// exchange parent with right child
+				array[loc_rchild] = array[loc_p];		
 				array[loc_p] = temp;
-				array[loc_rchild].loc = loc_rchild;		// sync the loc with current location
+
+				// update their locations
+				array[loc_rchild].loc = loc_rchild;
 				array[loc_p].loc = loc_p;
-				heapify( loc_rchild );					// heapify right child
+
+				// heapify right child
+				heapify(loc_rchild);					
 			}
 		}
 	}
