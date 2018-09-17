@@ -14,8 +14,6 @@ public class KWayMergeSort {
 	public static Integer[] kwaymergesort(int K, Integer[] input, Ticker ticker) {
 		int n = input.length;
 		
-		//
-		// FIXME
 		// Following just copies the input as the answer
 		//
 		// You must replace the loop below with code that performs
