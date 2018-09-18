@@ -23,15 +23,17 @@ public class RK {
 	public RK(int m) {
 		this.h = 0;
 		this.constPow = 1;
+
+		// loop to calculate the power to avoid overflow
 		for( int i = 0; i < m; ++i ){
-			// manually calculate the power
 			this.constPow *= 31;
-			// to avoid overflow
 			this.constPow %= 511;
 		}
+
+		// initialize the window
 		this.window = new ArrayList<Character>();
 		for( int i = 0; i < m; ++i ){
-			window.add('\u0000');
+			this.window.add('\u0000');
 		}
 	}
 	
@@ -39,15 +41,18 @@ public class RK {
 	/**
 	 * Compute the rolling hash for the previous m-1 characters with d appended.
 	 * @param d the next character in the target string
-	 * @return
+	 * @return h the rolling hash
 	 */
 	public int nextCh(char d) {
-		// get the last char that just left the window 
-		int quitChar = (int) window.get(0);
-		window.remove(0);
-		h = ((31*h - constPow*quitChar + d) % 511 + 511) % 511;
+		// get the char that just left the window 
+		int quitChar = (int) this.window.get(0);
+
+		// remove the char left and compute the rolling hash
+		this.window.remove(0);
+		this.h = ((31*this.h - this.constPow*quitChar + d) % 511 + 511) % 511;
+
 		// add the new char to the window
-		window.add(d);
-		return h;
+		this.window.add(d);
+		return this.h;
 	}
 }

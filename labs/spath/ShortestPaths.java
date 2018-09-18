@@ -119,7 +119,7 @@ public class ShortestPaths {
 		Vertex toVertex = endVertex;
 		
 		// trace back to the startVertex (with a null toEdge)
-		while(toEdge.get(toVertex) != null){
+		while(toEdge.get(toVertex) != null) {
 			path.addFirst(toEdge.get(toVertex));
 			toVertex = toEdge.get(toVertex).from;
 		}
