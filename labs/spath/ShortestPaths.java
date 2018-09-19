@@ -81,7 +81,7 @@ public class ShortestPaths {
 		startVertDist.decrease(startVertDist.getValue().sameVertexNewDistance(0));
 
 		// keep iterating until the MinHeap is empty (all vertice are updated)
-		while(!pq.isEmpty()){
+		while(!pq.isEmpty()) {
 			// extract the vertex with the minimal distance
 			VertexAndDist minVertDist = pq.extractMin();
 			int minDist = minVertDist.getDistance();
@@ -95,7 +95,7 @@ public class ShortestPaths {
 				// if vertex.distance + weight(edge) < successor.distance,
 				// the neighbor is decreased to a smaller distance, and update toEdge to this edge
 				if(minDist + weights.get(e) < toVertDist.getValue().getDistance()){
-					toVertDist.decrease(toVertDist.getValue().sameVertexNewDistance( minDist + weights.get(e) ));
+					toVertDist.decrease(toVertDist.getValue().sameVertexNewDistance(minDist + weights.get(e)));
 					toEdge.put(e.to, e);
 				}
 			}
